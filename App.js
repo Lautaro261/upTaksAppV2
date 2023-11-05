@@ -12,6 +12,8 @@ import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import Login from './components/Login';
 import Home from './components/Home';
 import Register from './components/Register';
+import Proyectos from './components/Proyectos';
+import NuevoProyecto from './components/NuevoProyecto';
 
 if (__DEV__) {  
   loadDevMessages();
@@ -46,11 +48,13 @@ export default function App() {
     <ApolloProvider client={client}>
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Register' screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName='Proyectos' screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="Register" component={Register}/>
-
+          <Stack.Screen name="Proyectos" component={Proyectos}/>
+          <Stack.Screen name="NuevoProyecto" component={NuevoProyecto}/>
+        
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

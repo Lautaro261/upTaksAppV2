@@ -65,7 +65,7 @@ const Login = () => {
             console.log("RESPUESTA",data)
             const { token } = data.autenticarUsuario
             console.log("token: ", token)
-            navigation.navigate("Home")
+            navigation.navigate("Proyectos")
 
         } catch (error) {
             console.log(error.message);
