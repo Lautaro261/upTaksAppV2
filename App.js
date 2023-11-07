@@ -14,6 +14,7 @@ import Home from './components/Home';
 import Register from './components/Register';
 import Proyectos from './components/Proyectos';
 import NuevoProyecto from './components/NuevoProyecto';
+import Proyecto from './components/Proyecto';
 
 if (__DEV__) {  
   loadDevMessages();
@@ -56,6 +57,7 @@ export default function App() {
           <Stack.Screen name="Register" component={Register}/>
           <Stack.Screen name="Proyectos" component={Proyectos}/>
           <Stack.Screen name="NuevoProyecto" component={NuevoProyecto}/>
+          <Stack.Screen name="Proyecto" component={Proyecto}/>
         
         </Stack.Navigator>
       </NavigationContainer>

@@ -83,10 +83,16 @@ const Proyectos = () => {
     setListData(newData);
   };
 
-//FUNCION QUE SE EJECUTA AL ABRIR UNA FILA
+  //FUNCION QUE SE EJECUTA AL ABRIR UNA FILA
   const onRowDidOpen = rowKey => {
     console.log('This row opened', rowKey);
   };
+
+  //FUNCION AL PRESIONAR UN PROYECTOS
+  const handlerProyecto=(item)=>{
+    console.log('Abriendo el proyecto', item.id)
+    navigation.navigate("Proyecto", item)
+  }
 
 
   useEffect(() => {
@@ -98,7 +104,7 @@ const Proyectos = () => {
 
   const renderItem = ({ item, index }) => (
     <Box key={index}>
-      <Pressable onPress={() => console.log('You touched me')} _dark={{bg: 'coolGray.800'}} _light={{bg: 'white'}}>
+      <Pressable onPress={() => handlerProyecto(item)} _dark={{bg: 'coolGray.800'}} _light={{bg: 'white'}}>
         <Box pl="4" pr="5" py="2">
           <HStack alignItems="center" space={8}>
             <Avatar size="48px" source={{ uri: item.avatarUrl }} />
