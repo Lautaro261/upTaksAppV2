@@ -28,7 +28,7 @@ const Login = () => {
 
     const [autenticarUsuario] = useMutation(AUTENTICAR_USUARIO)
     const { data, loading, error } = useQuery(GET_TEST)
-    console.log(data)
+    //console.log("linea 31",data)
 
 
     const mostrarAlerta = ()=>{
@@ -62,9 +62,10 @@ const Login = () => {
                     }
                 }
             })
-            console.log("RESPUESTA",data)
+           // console.log("RESPUESTA",data)
             const { token } = data.autenticarUsuario
-            console.log("token: ", token)
+            //console.log("linea 67", token)
+            AsyncStorage.setItem("token", token)
             navigation.navigate("Proyectos")
 
         } catch (error) {

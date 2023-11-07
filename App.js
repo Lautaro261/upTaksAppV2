@@ -25,7 +25,9 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext(async(_, {headers})=>{
+
   const token = await AsyncStorage.getItem('token')
+  //console.log('29', token)
 
   return{
     headers:{
@@ -48,7 +50,7 @@ export default function App() {
     <ApolloProvider client={client}>
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Proyectos' screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="Register" component={Register}/>
