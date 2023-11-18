@@ -31,7 +31,7 @@ const httpLink = createHttpLink({
 const authLink = setContext(async(_, {headers})=>{
 
   const token = await AsyncStorage.getItem('token')
-  //AsyncStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJlZGY0MDcyZTgzMDdmYTg0ZTdlMyIsImVtYWlsIjoiTmFodWVsQGdtYWlsLnhvbSIsIm5vbWJyZSI6Ik5haHVlbCIsImlhdCI6MTcwMDMxNTQ2NSwiZXhwIjoxNzAwMzI5ODY1fQ.RmwwJ2H2hIYab2y1-pe2CiOnJQjh0s3DWKY2K3DuYZg")
+  //AsyncStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJlZGY0MDcyZTgzMDdmYTg0ZTdlMyIsImVtYWlsIjoiTmFodWVsQGdtYWlsLnhvbSIsIm5vbWJyZSI6Ik5haHVlbCIsImlhdCI6MTcwMDM0MDAzNCwiZXhwIjoxNzAwMzU0NDM0fQ.tPBqZ5D6n0Y1TzOCiwDJ91r6fnUIe0H7NfTgyJHkYPc")
   //let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJlZGY0MDcyZTgzMDdmYTg0ZTdlMyIsImVtYWlsIjoiTmFodWVsQGdtYWlsLnhvbSIsIm5vbWJyZSI6Ik5haHVlbCIsImlhdCI6MTcwMDMxNTQ2NSwiZXhwIjoxNzAwMzI5ODY1fQ.RmwwJ2H2hIYab2y1-pe2CiOnJQjh0s3DWKY2K3DuYZg"
   //const token = await AsyncStorage.getItem('token')
   console.log('29', token)
