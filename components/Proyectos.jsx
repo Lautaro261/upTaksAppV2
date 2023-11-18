@@ -90,14 +90,20 @@ const Proyectos = () => {
 
   //FUNCION AL PRESIONAR UN PROYECTOS
   const handlerProyecto=(item)=>{
-    console.log('Abriendo el proyecto', item.id)
+    //console.log('Abriendo el proyecto', item.id)
     navigation.navigate("Proyecto", item)
+  }
+
+  //FUNCION DE BOTON "NUEVO PROYECTO"
+  const handlerNuevoProyecto=()=>{
+    //console.log("Linea 99", "quieres crear un nuevo proyecto")
+    navigation.navigate("NuevoProyecto")
   }
 
 
   useEffect(() => {
     if (data) {
-      console.log("Linea 69", data.obtenerProyectos);
+      console.log("Me actualicé", data.obtenerProyectos);
       setListData(data.obtenerProyectos);
     }
   }, [data]);
@@ -141,7 +147,7 @@ const Proyectos = () => {
   return (
     <Center flex="1">
       <Box safeArea flex="1">
-        <Button onPress={()=> console.log("click")}>
+        <Button onPress={()=> handlerNuevoProyecto()}>
           Nuevo Proyecto
         </Button>
 

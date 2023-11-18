@@ -91,7 +91,7 @@ const Login = () => {
         <VStack>
             <FormControl>
                 <FormControl.Label>Email</FormControl.Label>
-                <Input placeholder="juan@gmail.com" onChangeText={text => setEmail(text)}/>
+                <Input placeholder="juan@gmail.com" onChangeText={text => setEmail(text.toLowerCase())} value={email}/>
 
                 <FormControl.Label>Password</FormControl.Label>
                 <Input type="password" onChangeText={text => setPassword(text)}/>

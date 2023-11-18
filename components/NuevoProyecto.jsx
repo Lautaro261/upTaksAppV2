@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Input, FormControl, useToast, VStack, Center, Box, Heading } from "native-base";
 import { useNavigation } from "@react-navigation/native";
-import { useMutation, gql } from "@apollo/client";
+import { useMutation, useQuery, gql } from "@apollo/client";
 
 const NUEVO_PROYECTO = gql`
 mutation nuevoProyecto($input: ProyectoInput) {
@@ -29,12 +29,15 @@ const NuevoProyecto = () => {
     const navigation = useNavigation()
     const toast = useToast();
     const [nuevoProyecto] = useMutation(NUEVO_PROYECTO, {
-        update(cache, { data: { nuevoProyecto}}){
+        update(cache, { data: { nuevoProyecto }}){
             const { obtenerProyectos } = cache.readQuery({query: GET_PROYECTOS})
-            cache.readQuery({
-                query: GET_PROYECTOS, 
-                data: { obtenerProyectos: obtenerProyectos.concat([nuevoProyecto]) }
-            })
+
+
+         // Actualizar la caché con el nuevo proyecto
+         cache.writeQuery({
+            query: GET_PROYECTOS,
+            data: { obtenerProyectos: [...obtenerProyectos, nuevoProyecto] }
+        });
         }
     })
 
@@ -53,6 +56,7 @@ const NuevoProyecto = () => {
             setMensaje("El nombre del proyecto es obligatorio")
             mostrarAlerta("El nombre del proyecto es obligatorio")
         }
+        console.log(nombre)
 
         try {
             const { data } = await nuevoProyecto({
@@ -62,7 +66,7 @@ const NuevoProyecto = () => {
                     }
                 }
             })
-            console.log(data)
+            console.log("Nuevo Proyecto:",data)
             mostrarAlerta("Proyecto creado correctamente")
             navigation.navigate("Proyectos")
         } catch (error) {
@@ -82,7 +86,7 @@ const NuevoProyecto = () => {
                 <VStack>
                     <FormControl>
                         <FormControl.Label>Nombre del proyecto</FormControl.Label>
-                        <Input placeholder="Tienda Virtual"/>
+                        <Input placeholder="Tienda Virtual" onChangeText={(text)=>setNombre(text)}/>
                     </FormControl>
 
                     <Button onPress={()=>handleSubmit()}>
