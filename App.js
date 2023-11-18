@@ -7,6 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import { setContext } from 'apollo-link-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
+import { MIPORT } from "@env"
 
 
 import Login from './components/Login';
@@ -16,19 +17,22 @@ import Proyectos from './components/Proyectos';
 import NuevoProyecto from './components/NuevoProyecto';
 import Proyecto from './components/Proyecto';
 
+
+
 if (__DEV__) {  
   loadDevMessages();
   loadErrorMessages();
 }
 
 const httpLink = createHttpLink({
-  uri: "http://192.168.100.10:4000/"
+  uri: MIPORT
 })
 
 const authLink = setContext(async(_, {headers})=>{
 
-  const token = await AsyncStorage.getItem('token')
-  //console.log('29', token)
+  //const token = await AsyncStorage.getItem('token')
+  let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzJlZGY0MDcyZTgzMDdmYTg0ZTdlMyIsImVtYWlsIjoiTmFodWVsQGdtYWlsLnhvbSIsIm5vbWJyZSI6Ik5haHVlbCIsImlhdCI6MTcwMDI1ODI1NiwiZXhwIjoxNzAwMjcyNjU2fQ.MOhS-gTuEdP59MpAarzB33X6YfkAZyd2vrM3n9fA_hk"
+  console.log('29', token)
 
   return{
     headers:{

@@ -141,8 +141,8 @@ const Proyectos = () => {
   return (
     <Center flex="1">
       <Box safeArea flex="1">
-        <Button>
-          <Text>Nuevo Proyecto</Text>
+        <Button onPress={()=> console.log("click")}>
+          Nuevo Proyecto
         </Button>
 
         <Text>Selecciona un Proyecto</Text>

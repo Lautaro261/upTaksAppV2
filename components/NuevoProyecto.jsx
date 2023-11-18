@@ -12,13 +12,31 @@ mutation nuevoProyecto($input: ProyectoInput) {
 }
 `
 
+const GET_PROYECTOS = gql`
+query obtenerProyectos {
+    obtenerProyectos {
+        id
+        nombre
+        creado
+        }
+    }
+`
+
 const NuevoProyecto = () => {
 
     const [nombre, setNombre] = useState("")
     const [mensaje, setMensaje] = useState("")
     const navigation = useNavigation()
     const toast = useToast();
-    const [nuevoProyecto] = useMutation(NUEVO_PROYECTO)
+    const [nuevoProyecto] = useMutation(NUEVO_PROYECTO, {
+        update(cache, { data: { nuevoProyecto}}){
+            const { obtenerProyectos } = cache.readQuery({query: GET_PROYECTOS})
+            cache.readQuery({
+                query: GET_PROYECTOS, 
+                data: { obtenerProyectos: obtenerProyectos.concat([nuevoProyecto]) }
+            })
+        }
+    })
 
     const mostrarAlerta = (mensaje)=>{
         console.log('se crea una alerta')
